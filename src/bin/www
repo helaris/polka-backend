@@ -114,11 +114,9 @@ io.on('connection', client => {
       body: JSON.stringify(message),
       headers: { 'Content-Type': 'application/json' }
     }).then(res => {
-      if(res.status === 200) {
         onlineRecievers.forEach(user => {
           io.to(user.clientId).emit('message', message);
         })
-      }
     }).catch(err => {
       console.log(err.message)
     })

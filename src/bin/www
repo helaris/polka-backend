@@ -109,7 +109,7 @@ io.on('connection', client => {
   client.on('message', async (message, membersIds) => {
     const onlineRecievers = onlineUsers.filter(onlineUser => membersIds.includes(onlineUser.userId))
     // Address should not be hardcoded
-    fetch(`http://localhost${process.env.PORT}/api/chat/message`, {
+    fetch(`https://polkae.herokuapp.com/api/chat/message`, {
       method: 'PUT',
       body: JSON.stringify(message),
       headers: { 'Content-Type': 'application/json' }
